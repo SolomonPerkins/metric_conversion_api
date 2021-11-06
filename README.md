@@ -19,8 +19,8 @@ The following endpoints are available for this project
 | Endpoint   |      Method      | Payload| Description |
 |----------|:-------------:|------:|------------:|
 | `/api/v1/ping` |  GET   |  | A simple ping that ensure the server is available and ready to take incoming request.|
-| `/api/v1/list` |    GET   | `unit=[UNIT]` | Return the list of all the available units of measurement.|
+| `/api/v1/list` |    GET   | QUERY PARAM: `unit=[UNIT]` | Return the list of all the available units of measurement.|
 | `/api/v1/measures`| GET |   | Return all the different type of measurement this application supports.|
-| `/api/v1/convert`| POST | `{ value: [VALUE], to: [TO], from: [FROM] }`| Performs the conversion from one unit of measurement to the next.|
+| `/api/v1/convert`| POST | JSON PAYLOAD: `{ value: [VALUE], to: [TO], from: [FROM] }`| Performs the conversion from one unit of measurement to the next.|
 
 
