@@ -4,8 +4,9 @@
   "description": "This is an api used to cenvert various metric systems.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./test/**/*.spec.js",
     "start": "nodemon server.js"
+    
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
     "convert-units": "^2.3.4",
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.3"
   }
 }
