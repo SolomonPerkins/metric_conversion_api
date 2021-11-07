@@ -7,25 +7,23 @@ const errorSchema = require('../models/error');
 
 exports.convert = (req, res) => {
     //Get the input parameters
-    var body = req.body;
-    var value = body.value;
-    var from = body.from;
-    var to = body.to;
-
-    //Validate if they are correct
-    let err = errorSchema;    
-
+    var body = req.body || [];
+    
     //Make api request to convert data
-    var conversion = convertService(value).from(from).to(to)
-    if(! conversion) {
-        err.success = false;
-        err.message = `Fail to convert ${value} from ${from} to ${to}`;
-        res.send(err)
-    }
+    body.forEach((element, index, obj) => {
+        var value = element.value;
+        var from = element.from.abbr;
+        var to = element.to.abbr;
+        if(!! value && !! from && !! to) {
+            var result = convertService(value).from(from).to(to);
+        }
+        element.result = result;
+        element.message = (! result && result != 0 ) ? `Fail conversion` : '';
+    });
     
     let rbody = convertSchema;
     rbody.success = true
-    rbody.data = conversion;
+    rbody.data = body;
     
     res.json(rbody);
 };

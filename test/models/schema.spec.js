@@ -35,7 +35,6 @@ describe('Convert Schema', () => {
     
     it('Should update the model with correct data propperty', () => {
         let eSchema = convertSchema;
-
        assert.deepEqual(eSchema.data,{}, 'missing success property on object');
     })
     
